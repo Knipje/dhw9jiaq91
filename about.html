@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Mammon LLC</title>
+  <meta name="description" content="Learn about Mammon LLC's history, corporate structure, departments, and the Patron who guides our diabolical mission." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Mission Block ─────────────────────── */
+    .mission-block {
+      display: grid;
+      grid-template-columns: 1fr 2px 1fr;
+      gap: 4rem;
+      align-items: start;
+      padding: 4rem 0;
+    }
+    .mission-block .divider {
+      background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+      height: 100%;
+      min-height: 200px;
+    }
+    @media (max-width: 760px) {
+      .mission-block {
+        grid-template-columns: 1fr;
+      }
+      .mission-block .divider { display: none; }
+    }
+    .mission-block .value-prop h3 {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .mission-block .value-prop p {
+      color: var(--ash-dim);
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .values-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ── History Timeline ──────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--blood-bright), var(--gold-dim));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.9rem;
+      top: 0.45rem;
+      width: 8px;
+      height: 8px;
+      background: var(--blood-bright);
+      border: 1px solid var(--gold-dim);
+      transform: rotate(45deg);
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-date {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--blood-bright);
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--gold-pale);
+    }
+    .timeline-item p {
+      font-size: 0.9rem;
+      color: var(--ash-dim);
+      font-style: italic;
+      margin-bottom: 0;
+    }
+
+    /* ── Leadership Cards ──────────────────── */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-dim);
+    }
+    @media (max-width: 760px) { .leadership-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 501px) and (max-width: 760px) {
+      .leadership-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .leader-card {
+      background: var(--void-mid);
+      padding: 0;
+      overflow: hidden;
+    }
+    .leader-card:hover .leader-photo .img-placeholder {
+      transform: scale(1.03);
+    }
+    .leader-photo {
+      height: 280px;
+      overflow: hidden;
+    }
+    .leader-photo .img-placeholder {
+      height: 100%;
+      transition: transform 0.4s ease;
+      border: none;
+      border-bottom: 2px solid var(--blood-bright);
+    }
+    .leader-info {
+      padding: 1.5rem;
+    }
+    .leader-info h3 {
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+      color: var(--gold-pale);
+    }
+    .leader-title {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blood-bright);
+      margin-bottom: 0.75rem;
+    }
+    .leader-contact {
+      font-size: 0.8rem;
+      color: var(--ash-dim);
+      font-style: italic;
+    }
+
+    /* ── Departments ───────────────────────── */
+    .dept-table-wrap {
+      border: var(--border-gold);
+      overflow: hidden;
+    }
+    .dept-header-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      background: var(--void-light);
+      border-bottom: 1px solid var(--blood-bright);
+      padding: 0.75rem 1.5rem;
+      gap: 1rem;
+    }
+    .dept-header-row span {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .dept-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      padding: 1.25rem 1.5rem;
+      gap: 1rem;
+      align-items: center;
+      transition: background 0.15s;
+    }
+    .dept-row:last-child { border-bottom: none; }
+    .dept-row:hover { background: rgba(201,168,76,0.03); }
+    .dept-name {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      color: var(--gold-pale);
+      letter-spacing: 0.04em;
+    }
+    .dept-desc {
+      font-size: 0.85rem;
+      color: var(--ash-dim);
+      font-style: italic;
+    }
+    .dept-pledge-note {
+      font-size: 0.75rem;
+      color: var(--blood-bright);
+      font-style: italic;
+    }
+    @media (max-width: 640px) {
+      .dept-header-row, .dept-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Pledge Section ────────────────────── */
+    .pledge-full {
+      background: var(--void-light);
+      border: var(--border-gold);
+      border-left: 3px solid var(--gold);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .pledge-full::before {
+      content: '⛧';
+      position: absolute;
+      right: 2rem;
+      top: 2rem;
+      font-size: 6rem;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .pledge-stanza {
+      font-style: italic;
+      color: var(--ash-dim);
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+    .pledge-stanza:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+      <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+    </svg>
+    Mammon LLC
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="pact.html">Services</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="pact.html#soul-transfer" class="nav-cta">Sign the Pact</a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════════════ -->
+<header class="page-hero">
+  <span class="section-label">Who We Are</span>
+  <h1>About Mammon LLC</h1>
+  <p class="lead">A diversified infernal holding company committed to excellence in chaos, greed, and soul management.</p>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     MISSION & VALUES
+══════════════════════════════════════════════ -->
+<section class="section" id="mission">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Mission &amp; Values</span>
+      <h2>Driven by Avarice,<br>Guided by the Patron</h2>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:3rem;">
+      <div>
+        <p>
+          Mammon LLC was established under the eternal mandate of our Patron to exploit
+          the full productive potential of mortal greed, despair, and ambition. We believe
+          that <strong>every soul has value</strong> — and that it is our sacred corporate
+          duty to acquire as many of them as possible, on the most advantageous terms achievable.
+        </p>
+        <p>
+          Our mission is simple: to advance the interests of the Abyss through disciplined,
+          data-driven diabolism — while maintaining a positive, inclusive workplace culture
+          for warlocks and demons of all backgrounds.
+        </p>
+      </div>
+      <div>
+        <p>
+          We operate across five core practice areas: financial disruption, elemental event
+          management, warlock contract services, soul acquisition, and what we call
+          <em>Sustained Mortal Despair</em> — a proprietary long-term investment strategy
+          that consistently outperforms conventional benchmarks.
+        </p>
+        <p>
+          Our Patron's vision is our north star. Or south star, as the infernal navigation
+          preferred by our board tends to orient toward the abyss rather than any fixed
+          celestial body.
+        </p>
+      </div>
+    </div>
+
+    <div class="mission-block">
+      <div class="values-list">
+        <div class="value-prop">
+          <h3>⛧ &nbsp; Uncompromising Greed</h3>
+          <p>We pursue profit above all things, including ethics, mortality, and several laws of physics.</p>
+        </div>
+        <div class="value-prop">
+          <h3>📋 &nbsp; Rigorous Process</h3>
+          <p>Our pacts are ironclad. Our fine print is impenetrable. Our HR procedures are surprisingly thorough.</p>
+        </div>
+        <div class="value-prop">
+          <h3>🌍 &nbsp; Global Impact</h3>
+          <p>We operate across all mortal territories, infernal planes, and several jurisdictions that do not yet have names.</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="values-list">
+        <div class="value-prop">
+          <h3>🦷 &nbsp; Employee Wellbeing</h3>
+          <p>Competitive salary in Eldritch Blast, free dental, and access to arcane knowledge beyond mortal comprehension.</p>
+        </div>
+        <div class="value-prop">
+          <h3>🤝 &nbsp; Inclusive Culture</h3>
+          <p>We welcome beings of all races, genders, and planes of origin. Equal opportunity across all levels of evil.</p>
+        </div>
+        <div class="value-prop">
+          <h3>🔒 &nbsp; Absolute Confidentiality</h3>
+          <p>The Patron's true nature shall remain undisclosed. We do not elaborate on this further. Do not ask.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     HISTORY TIMELINE
+══════════════════════════════════════════════ -->
+<section class="section section--dark" id="history">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="section-label">Corporate History</span>
+        <h2>A Legacy of<br>Strategic Malevolence</h2>
+        <div class="gold-rule"></div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Before Recorded History</div>
+            <h3>Foundation</h3>
+            <p>Mammon LLC is established under the Patron's mandate. First soul acquired. First market manipulated. First dental claim filed.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">The Dark Ages</div>
+            <h3>Expansion Phase I</h3>
+            <p>Significant growth in plague-adjacent services. Warlock recruitment programme formalised. The Eldritch Pledge introduced at morning meetings.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Industrial Revolution</div>
+            <h3>Market Division Launch</h3>
+            <p>Mammon LLC enters financial markets. Stock price manipulation division established. Compound soul interest introduced as a financial instrument.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Present Day</div>
+            <h3>Digital Transformation</h3>
+            <p>SoulVault™ launches. Blood pacts available via mobile app. The Patron sends communications via encrypted dream-channel and push notification.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER] ═════════════════
+           TYPE   : Historical / archival photograph
+           CONTENT: An ancient-looking document — parchment,
+                    wax seal, ornate calligraphy. The first
+                    Eldritch Contract. Photographed flat-lay
+                    style on dark stone. Some text deliberately
+                    blurred/illegible. Gold seal visible.
+           FILE   : assets/ancient-contract.jpg
+           DIMENSIONS: 700×900, portrait orientation preferred
+      ═════════════════════════════════════════ -->
+      <div class="img-placeholder" style="min-height:500px;">
+        <span class="ph-icon">📜</span>
+        <span class="ph-type">Archival Photograph — Original Contract</span>
+        <p class="ph-desc">Flat-lay of ancient parchment document with wax seal, ornate calligraphy, on dark stone surface. Some text deliberately illegible. Gold seal prominent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     LEADERSHIP
+══════════════════════════════════════════════ -->
+<section class="section" id="leadership">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Executive &amp; Senior Staff</span>
+      <h2>The Faces of Mammon LLC</h2>
+      <div class="gold-rule center"></div>
+      <p style="color:var(--ash-dim); font-style:italic; max-width:520px; margin:0 auto;">
+        Our leadership team is accessible through a variety of occult and conventional channels.
+        Please consult Appendix K of your contract for contact protocols.
+      </p>
+    </div>
+
+    <div class="leadership-grid">
+
+      <!-- ══ [IMAGE PLACEHOLDER — JOHN SMITH] ════
+           TYPE   : Corporate headshot photograph
+           CONTENT: John Smith, CR Manager. A formal corporate
+                    portrait — dark suit, warm smile, but
+                    something slightly off about the eyes.
+                    Plain dark background. Professional lighting.
+           FILE   : assets/team-john-smith.jpg
+      ════════════════════════════════════════ -->
+      <div class="leader-card">
+        <div class="leader-photo">
+          <div class="img-placeholder">
+            <span class="ph-icon">👤</span>
+            <span class="ph-type">Headshot — John Smith</span>
+            <p class="ph-desc">Corporate portrait, dark suit, warm but unsettling smile. Formally lit, plain dark bg.</p>
+          </div>
+        </div>
+        <div class="leader-info">
+          <h3>John Smith</h3>
+          <div class="leader-title">CR Manager — Creature Resources</div>
+          <p class="leader-contact">Contact: Send pigeon to the tallest tower in the Eastern Kingdoms marked "CR Manager John Smith, Patron's Castle." Await response by dawn.</p>
+        </div>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER — SARAH JOHNSON] ═
+           TYPE   : Corporate headshot photograph
+           CONTENT: Sarah Johnson, Benefits Specialist.
+                    Professional, poised, authoritative.
+                    Appears during a blood moon if summoned.
+                    Standard corporate portrait otherwise.
+           FILE   : assets/team-sarah-johnson.jpg
+      ════════════════════════════════════════ -->
+      <div class="leader-card">
+        <div class="leader-photo">
+          <div class="img-placeholder">
+            <span class="ph-icon">👤</span>
+            <span class="ph-type">Headshot — Sarah Johnson</span>
+            <p class="ph-desc">Professional corporate portrait. Authoritative, poised. Appears in visions on the blood moon.</p>
+          </div>
+        </div>
+        <div class="leader-info">
+          <h3>Sarah Johnson</h3>
+          <div class="leader-title">Benefits Specialist</div>
+          <p class="leader-contact">Contact: Perform summoning ritual on the night of the blood moon, reciting "Sarah Johnson, Benefits Specialist of the Patron, heed my call!"</p>
+        </div>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER — MICHAEL THOMPSON]
+           TYPE   : Corporate headshot photograph
+           CONTENT: Michael Thompson, Payroll Administrator.
+                    Slightly translucent during lunar eclipses.
+                    Otherwise a standard corporate portrait.
+           FILE   : assets/team-michael-thompson.jpg
+      ════════════════════════════════════════ -->
+      <div class="leader-card">
+        <div class="leader-photo">
+          <div class="img-placeholder">
+            <span class="ph-icon">👤</span>
+            <span class="ph-type">Headshot — Michael Thompson</span>
+            <p class="ph-desc">Corporate portrait. Appears slightly translucent; this is a known issue and not a printer error.</p>
+          </div>
+        </div>
+        <div class="leader-info">
+          <h3>Michael Thompson</h3>
+          <div class="leader-title">Payroll Administrator</div>
+          <p class="leader-contact">Contact: Recite "Michael Thompson, Payroll Administrator of the Patron, reveal thyself!" during the next lunar eclipse. Await a sign or omen.</p>
+        </div>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER — EMILY DAVIS] ══
+           TYPE   : Corporate headshot photograph
+           CONTENT: Emily Davis, Department Manager.
+                    Located in the Hidden Cave of the Oracle,
+                    Forbidden Realm. Formal, commanding.
+           FILE   : assets/team-emily-davis.jpg
+      ════════════════════════════════════════ -->
+      <div class="leader-card">
+        <div class="leader-photo">
+          <div class="img-placeholder">
+            <span class="ph-icon">👤</span>
+            <span class="ph-type">Headshot — Emily Davis</span>
+            <p class="ph-desc">Department Manager. Commanding, formal. Located beyond the Forbidden Realm. Portrait taken with the sacred token of the Patron.</p>
+          </div>
+        </div>
+        <div class="leader-info">
+          <h3>Emily Davis</h3>
+          <div class="leader-title">Department Manager</div>
+          <p class="leader-contact">Contact: Traverse the treacherous mountains of the Forbidden Realm, locate the hidden cave of the Oracle, present the sacred token of the Patron.</p>
+        </div>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER — DAVID WILSON] ══
+           TYPE   : Corporate headshot photograph
+           CONTENT: David Wilson, IT Helpdesk Technician.
+                    Located behind the River of Fire.
+                    Portrait looks like a standard IT support
+                    person — but the cave backdrop is visible.
+           FILE   : assets/team-david-wilson.jpg
+      ════════════════════════════════════════ -->
+      <div class="leader-card">
+        <div class="leader-photo">
+          <div class="img-placeholder">
+            <span class="ph-icon">👤</span>
+            <span class="ph-type">Headshot — David Wilson</span>
+            <p class="ph-desc">IT Helpdesk, located across the River of Fire. Standard IT support demeanour; cave backdrop visible behind him.</p>
+          </div>
+        </div>
+        <div class="leader-info">
+          <h3>David Wilson</h3>
+          <div class="leader-title">IT Helpdesk Technician</div>
+          <p class="leader-contact">Contact: Follow the path of seven stars, cross the River of Fire, reach the IT cave. Knock thrice. Say "David Wilson, I seek thy guidance in matters of IT support."</p>
+        </div>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER — THE PATRON] ═══
+           TYPE   : Abstract / symbolic image
+           CONTENT: The Patron. Identity unknowable.
+                    Not a portrait — rather a symbolic image:
+                    a void, a sigil, a swirling darkness.
+                    Deeply unsettling. No face shown.
+           FILE   : assets/team-the-patron.jpg
+      ════════════════════════════════════════ -->
+      <div class="leader-card">
+        <div class="leader-photo">
+          <div class="img-placeholder" style="background: radial-gradient(ellipse at center, #1A0005 0%, #05000A 100%);">
+            <span class="ph-icon" style="opacity:0.15; font-size:4rem;">⛧</span>
+            <span class="ph-type">Symbolic Image — The Patron</span>
+            <p class="ph-desc">No portrait. A swirling void, a sigil, an unsettling darkness. Identity unknowable by design. Do not attempt to photograph.</p>
+          </div>
+        </div>
+        <div class="leader-info">
+          <h3>[REDACTED]</h3>
+          <div class="leader-title">The Patron · Founder &amp; Eternal Chairman</div>
+          <p class="leader-contact">Contact: Perform divination ritual using the Patron's sigil. Await response in dreams. Do not attempt to learn the Patron's true name.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     DEPARTMENTS
+══════════════════════════════════════════════ -->
+<section class="section section--darker" id="departments">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Organisational Structure</span>
+      <h2>Our Departments</h2>
+      <div class="gold-rule"></div>
+      <p style="color:var(--ash-dim); font-style:italic; max-width:560px;">
+        Mammon LLC operates through five principal departments, each with its own
+        Pledge recitation culture and distinct contribution to our infernal mission.
+      </p>
+    </div>
+
+    <div class="dept-table-wrap">
+      <div class="dept-header-row">
+        <span>Department</span>
+        <span>Function</span>
+        <span>Pledge Culture</span>
+      </div>
+      <div class="dept-row">
+        <div class="dept-name">Dark Arts</div>
+        <div class="dept-desc">Core magical operations, eldritch power research, and ritual execution. The foundational practice of Mammon LLC.</div>
+        <div class="dept-pledge-note">Somber, reverent tone. Candle lighting. Brief meditation may precede recitation.</div>
+      </div>
+      <div class="dept-row">
+        <div class="dept-name">Marketing &amp; Sales</div>
+        <div class="dept-desc">Mortal temptation campaigns, soul acquisition outreach, brand management. Responsible for the SoulVault™ growth strategy.</div>
+        <div class="dept-pledge-note">Enthusiastic delivery. Persuasive inflection encouraged. Salesmanship elements permitted.</div>
+      </div>
+      <div class="dept-row">
+        <div class="dept-name">Research &amp; Development</div>
+        <div class="dept-desc">Expansion of eldritch knowledge, new power development, interdimensional market research, and chaos engineering.</div>
+        <div class="dept-pledge-note">Innovation-focused. References to scientific principles and cutting-edge technologies permitted.</div>
+      </div>
+      <div class="dept-row">
+        <div class="dept-name">Creature Resources</div>
+        <div class="dept-desc">Warlock onboarding, benefits administration, performance management, and employee relations across all species and planes.</div>
+        <div class="dept-pledge-note">Emphasis on fairness, equality, and inclusivity. Warmly delivered. Supportive posture.</div>
+      </div>
+      <div class="dept-row">
+        <div class="dept-name">Compliance &amp; Legal</div>
+        <div class="dept-desc">Pact drafting, regulatory adherence (Laws of the Abyss), confidentiality enforcement, and fine print optimisation.</div>
+        <div class="dept-pledge-note">Strict, formal tone. Emphasis on adherence, confidentiality, and legal obligation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     OFFICE / CULTURE IMAGE
+══════════════════════════════════════════════ -->
+<section class="section section--blood">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="section-label">Company Culture</span>
+        <h2>A Positive &amp; Inclusive<br>Infernal Workplace</h2>
+        <div class="gold-rule"></div>
+        <p>
+          We are committed to fostering an environment where every warlock, demon, fiend,
+          and ambitious mortal can thrive. Our Appendix A on Inclusive Language in the
+          Eldritch Workspace reflects our genuine dedication to mutual respect — regardless
+          of race, gender, religion, or plane of origin.
+        </p>
+        <p>
+          Each morning begins with the Eldritch Pledge, recited according to the cultural
+          norms of each department. Afternoons are reserved for scheme execution and market
+          disruption. Free dental claims may be submitted to Sarah Johnson via ritual.
+        </p>
+        <a href="careers.html" class="btn btn-outline" style="margin-top:1rem;">Join Our Team →</a>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER] ═════════════════
+           TYPE   : Office / culture photograph
+           CONTENT: Open-plan office space — dark aesthetic,
+                    gothic arches, but modern desks and screens.
+                    Figures working at computers, some hooded.
+                    Warm (red/gold) ambient lighting. Pentagram
+                    motif visible in the floor tiles. Feels
+                    simultaneously corporate and deeply wrong.
+           FILE   : assets/office-culture.jpg
+           DIMENSIONS: 800×600 minimum
+      ═════════════════════════════════════════ -->
+      <div class="img-placeholder" style="min-height:400px;">
+        <span class="ph-icon">🏢</span>
+        <span class="ph-type">Culture Photograph — Open Plan Office</span>
+        <p class="ph-desc">Dark open-plan office with gothic arches, modern desks, screens. Robed &amp; suited figures working. Pentagram in floor tiles. Red/gold ambient light.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     THE ELDRITCH PLEDGE (FULL)
+══════════════════════════════════════════════ -->
+<section class="section section--dark" id="pledge">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Recited Each Morning</span>
+      <h2>The Eldritch Company Pledge</h2>
+      <div class="gold-rule center"></div>
+      <p style="color:var(--ash-dim); font-style:italic; max-width:520px; margin:0 auto 3rem;">
+        All employees are expected to recite the following pledge each morning in the
+        manner appropriate to their department. See full etiquette guidelines in
+        your employment contract.
+      </p>
+    </div>
+
+    <div style="max-width:680px; margin:0 auto;">
+      <div class="pledge-full">
+        <p class="pledge-stanza">
+          I, [Employee Name], do solemnly swear,<br>
+          To serve the Eldritch Company's business with utmost care.<br>
+          I shall uphold our Patron's arcane vision,<br>
+          With unwavering loyalty, beyond all derision.
+        </p>
+        <p class="pledge-stanza">
+          I shall harness the power of eldritch blast,<br>
+          In pursuit of our goals, with skills unsurpassed.<br>
+          I shall delve into the occult with caution and grace,<br>
+          Embracing the mysteries of the void's dark embrace.
+        </p>
+        <p class="pledge-stanza">
+          I shall strive for excellence in all I do,<br>
+          Unleashing my potential, both old and anew.<br>
+          I shall keep our secrets, hidden from the light,<br>
+          Guarding the eldritch knowledge, day and night.
+        </p>
+        <p class="pledge-stanza">
+          I shall work with my colleagues, in harmony and trust,<br>
+          Embracing our diversity, and overcoming all gust.<br>
+          I shall contribute my skills, my knowledge, and might,<br>
+          To further the Eldritch Company's formidable sight.
+        </p>
+        <p class="pledge-stanza" style="margin-bottom:0;">
+          So, as I begin each day with eldritch zeal,<br>
+          I pledge my allegiance, with unwavering steel.<br>
+          For the Eldritch Company's business, I shall give my all,<br>
+          Using eldritch blast, to answer our call.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+            <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+          </svg>
+          Mammon LLC
+        </a>
+        <p><em>"Greed is not merely good — it is divine. And we are its faithful servants."</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#leadership">Leadership</a></li>
+          <li><a href="about.html#departments">Departments</a></li>
+          <li><a href="about.html#pledge">Eldritch Pledge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="pact.html">Eldritch Pacts</a></li>
+          <li><a href="pact.html#soul-transfer">Soul Transference</a></li>
+          <li><a href="pact.html#soulvault">SoulVault™</a></li>
+          <li><a href="pact.html#spells">Spells &amp; Invocations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Opportunities</h5>
+        <ul>
+          <li><a href="careers.html">Open Positions</a></li>
+          <li><a href="careers.html#apply">How to Apply</a></li>
+          <li><a href="contact.html">Contact CR</a></li>
+          <li><a href="pact.html#appendix-b">Dress Code</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="legal">
+        Mammon LLC is governed by the Laws of the Abyss. All pacts are irrevocable and binding. The Patron's true identity remains undisclosed.
+        Mammon LLC is an equal opportunity employer across all levels of evil. SoulVault™ is a registered trademark.
+        By reading this page you have been catalogued.
+      </p>
+      <div class="copyright">© MAMMON LLC · ALL RIGHTS RESERVED · ALL SOULS RESERVED</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.style.display === 'flex';
+      links.style.display = open ? '' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '72px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(5,0,10,0.97)';
+      links.style.padding = '1.5rem 2.5rem';
+      links.style.borderBottom = '1px solid rgba(201,168,76,0.15)';
+    });
+  }
+</script>
+</body>
+</html>

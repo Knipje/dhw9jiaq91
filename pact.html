@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services &amp; Pacts — Mammon LLC</title>
+  <meta name="description" content="Eldritch Pacts, Soul Transference Agreements, SoulVault digital contracts, and the full suite of Mammon LLC warlock services." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Pact Document Styling ────────────── */
+    .pact-document {
+      background: var(--void-light);
+      border: var(--border-gold);
+      border-top: 3px solid var(--gold);
+      padding: 3.5rem;
+      position: relative;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .pact-document::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(201,168,76,0.08);
+      pointer-events: none;
+    }
+    .pact-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      text-align: center;
+      color: var(--gold-pale);
+      margin-bottom: 0.25rem;
+    }
+    .pact-subtitle {
+      text-align: center;
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--blood-bright);
+      margin-bottom: 2.5rem;
+    }
+    .pact-recital {
+      font-style: italic;
+      color: var(--ash-dim);
+      font-size: 0.95rem;
+      border-top: var(--border-gold);
+      border-bottom: var(--border-gold);
+      padding: 1.5rem 0;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .pact-section-head {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--blood);
+    }
+    .pact-clause {
+      margin-bottom: 1rem;
+      color: var(--ash-dim);
+      font-size: 0.92rem;
+    }
+    .pact-clause strong {
+      color: var(--ash);
+      font-weight: 600;
+    }
+    .fine-print {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed rgba(201,168,76,0.2);
+      font-size: 0.72rem;
+      color: var(--ash-dim);
+      opacity: 0.6;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .sig-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: var(--border-gold);
+    }
+    @media (max-width: 580px) { .sig-row { grid-template-columns: 1fr; } }
+    .sig-block { }
+    .sig-line {
+      border-bottom: 1px solid var(--gold-dim);
+      height: 40px;
+      margin-bottom: 0.4rem;
+    }
+    .sig-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ash-dim);
+    }
+
+    /* ── Appendix Accordion ───────────────── */
+    .appendix-list {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    details.appendix-item {
+      border: var(--border-gold);
+      border-top: 2px solid var(--blood-bright);
+      margin-bottom: 2px;
+      background: var(--void-mid);
+    }
+    details.appendix-item[open] {
+      border-top-color: var(--gold);
+    }
+    details.appendix-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.75rem;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    details.appendix-item summary::-webkit-details-marker { display: none; }
+    details.appendix-item summary .app-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blood-bright);
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    details.appendix-item summary h4 {
+      font-size: 0.95rem;
+      color: var(--gold-pale);
+      flex: 1;
+      letter-spacing: 0.03em;
+    }
+    details.appendix-item summary .app-toggle {
+      color: var(--gold-dim);
+      font-size: 1.1rem;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    details.appendix-item[open] summary .app-toggle {
+      transform: rotate(45deg);
+    }
+    .appendix-body {
+      padding: 0 1.75rem 2rem;
+      color: var(--ash-dim);
+      font-size: 0.9rem;
+      font-style: italic;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      padding-top: 1.5rem;
+    }
+    .appendix-body p { margin-bottom: 0.75rem; }
+    .appendix-body ul { padding-left: 1.25rem; }
+    .appendix-body li { margin-bottom: 0.4rem; color: var(--ash-dim); }
+
+    /* ── Spells Table ─────────────────────── */
+    .spells-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 640px) { .spells-grid { grid-template-columns: 1fr; } }
+    .spells-grid h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-dim);
+      border-bottom: 1px solid var(--blood);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .spell-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.07);
+      font-size: 0.9rem;
+      color: var(--ash-dim);
+    }
+    .spell-tag:last-child { border-bottom: none; }
+    .spell-tag::before {
+      content: '✦';
+      color: var(--blood-bright);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+      <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+    </svg>
+    Mammon LLC
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="pact.html" class="active">Services</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="#soul-transfer" class="nav-cta">Sign the Pact</a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════════════ -->
+<header class="page-hero">
+  <span class="section-label">Eldritch Pacts &amp; Corporate Services</span>
+  <h1>Services &amp; Contracts</h1>
+  <p class="lead">From bespoke warlock pacts to full soul transference agreements — all governed by the Laws of the Abyss and executed with meticulous precision.</p>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     THE ELDRITCH PACT (Document)
+══════════════════════════════════════════════ -->
+<section class="section" id="pact">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Our Standard Instrument</span>
+      <h2>The Eldritch Pact</h2>
+      <div class="gold-rule center"></div>
+      <p style="color:var(--ash-dim); font-style:italic; max-width:560px; margin:0 auto 3rem;">
+        The following is a representative excerpt from our standard Warlock Employment
+        Contract. Full terms, appendices, and fine print are provided upon signing.
+        Review is recommended. Understanding is not guaranteed.
+      </p>
+    </div>
+
+    <!-- ══ [IMAGE PLACEHOLDER] ═════════════════
+         TYPE   : Document / atmospheric photograph
+         CONTENT: Close-up overhead shot of an elegant
+                  dark desk with the Eldritch Pact laid out —
+                  parchment paper, gold nib pen resting on it,
+                  a black candle burning beside it. Atmospheric,
+                  dramatic lighting. The contract text blurred
+                  or illegible. Wax seal visible at bottom.
+         FILE   : assets/pact-desk.jpg
+         DIMENSIONS: 1100×500, wide crop
+    ═════════════════════════════════════════ -->
+    <div class="img-placeholder" style="height:300px; margin-bottom:3rem;">
+      <span class="ph-icon">🕯️</span>
+      <span class="ph-type">Atmospheric Photograph — Contract on Desk</span>
+      <p class="ph-desc">Overhead: parchment contract on dark desk, gold nib pen resting on it, black candle burning, wax seal. Dramatic lighting. Contract text blurred/illegible.</p>
+    </div>
+
+    <div class="pact-document">
+      <div class="pact-title">Eldritch Pact</div>
+      <div class="pact-subtitle">Mammon Incorporated LLC</div>
+
+      <div class="pact-recital">
+        This Eldritch Pact ("Contract") is entered into between the undersigned Warlock ("Warlock")
+        and the elusive entity known as the Patron ("Patron"), hereinafter collectively referred to as the "Parties".
+      </div>
+
+      <div class="pact-section-head">Consideration from the Patron</div>
+      <p class="pact-clause">In consideration of the services provided by the Warlock, the Patron agrees to provide:</p>
+      <ol style="padding-left:1.5rem; color:var(--ash-dim); font-size:0.92rem;">
+        <li class="pact-clause">Access to occult knowledge and arcane powers, including but not limited to the <strong>"Eldritch Blast"</strong>, to be used at the Warlock's discretion.</li>
+        <li class="pact-clause">Assistance in achieving the Warlock's personal goals, <em>subject to the discretion of the Patron.</em></li>
+        <li class="pact-clause">Provision of resources and protection from potential adversaries, as deemed necessary by the Patron.</li>
+        <li class="pact-clause">Reimbursement for reasonable and necessary <strong>dental expenses</strong> incurred by the Warlock, up to a pre-approved amount of gold pieces per year, upon submission of valid receipts.</li>
+      </ol>
+
+      <div class="pact-section-head">Obligations of the Warlock</div>
+      <p class="pact-clause">The Warlock agrees to perform the following services on behalf of the Patron:</p>
+      <ol style="padding-left:1.5rem; color:var(--ash-dim); font-size:0.92rem;">
+        <li class="pact-clause">Utilise the supernatural powers granted by the Patron to cast spells, including but not limited to the "Eldritch Blast", for the Patron's benefit.</li>
+        <li class="pact-clause">Keep the existence of the Patron and the nature of their relationship <strong>strictly confidential</strong>, refraining from any disclosure to third parties.</li>
+        <li class="pact-clause">Fulfil any additional requests or tasks as directed by the Patron, <em>without hesitation or question.</em></li>
+      </ol>
+
+      <div class="pact-section-head">Governing Law &amp; Termination</div>
+      <p class="pact-clause">This Contract shall be governed by and construed in accordance with the <strong>Laws of the Abyss</strong>, without regard to its conflict of law principles. This Contract shall commence upon signing and remain in effect <em>indefinitely</em>, unless terminated by either Party with written notice. Termination shall not release the Warlock from obligations, including the obligation to maintain confidentiality.</p>
+
+      <div class="sig-row">
+        <div class="sig-block">
+          <div class="sig-line"></div>
+          <div class="sig-label">Warlock Signature · Date</div>
+        </div>
+        <div class="sig-block">
+          <div class="sig-line"></div>
+          <div class="sig-label">Patron Signature · Date · [REDACTED]</div>
+        </div>
+      </div>
+
+      <div class="fine-print">
+        <strong style="font-style:normal; font-size:0.72rem; color:var(--ash-dim); opacity:1;">Fine Print Clause:</strong>
+        By entering into this Eldritch Pact, the Warlock acknowledges and agrees to adhere to all guidelines, policies, and procedures outlined in the appendices attached hereto, including but not limited to Appendix A: Inclusive Language in the Eldritch Workspace, Appendix B: Dress Code and Clothing Purchase Procedure, and Appendix C: Responsible Use of Eldritch Powers. The Warlock further acknowledges that failure to comply with these appendices may result in consequences as determined by the Patron or the Eldritch powers. The Patron may terminate this Contract at any time, for any reason, with or without notice, and without any obligation to provide compensation, refund, or reimbursement. The Patron's true motives, identity, and nature may be unknowable. Any attempts to uncover or disclose such information may result in severe consequences including soul forfeiture.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SPELLS & INVOCATIONS
+══════════════════════════════════════════════ -->
+<section class="section section--dark" id="spells">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="section-label">Appendix D</span>
+        <h2>Approved Spells &amp;<br>Eldritch Invocations</h2>
+        <div class="gold-rule"></div>
+        <p>
+          Upon signing the Eldritch Pact, the Warlock gains access to the following
+          spells and invocations as granted by the Patron. The specific powers granted
+          may be adjusted at the Patron's discretion. Eldritch Powers remain the
+          intellectual property of the Patron at all times.
+        </p>
+        <p style="color:var(--ash-dim); font-style:italic; font-size:0.9rem;">
+          Note: Eldritch Powers granted by the Patron are a loan and not ownership.
+          The Warlock shall not claim any proprietary rights over any spells,
+          invocations, or incantations.
+        </p>
+      </div>
+      <div>
+        <div class="spells-grid">
+          <div>
+            <h4>Eldritch Spells</h4>
+            <div class="spell-tag">Eldritch Blast</div>
+            <div class="spell-tag">Hex</div>
+            <div class="spell-tag">Armor of Agathys</div>
+            <div class="spell-tag">Charm Person</div>
+            <div class="spell-tag">Hellish Rebuke</div>
+            <div class="spell-tag">Misty Step</div>
+          </div>
+          <div>
+            <h4>Eldritch Invocations</h4>
+            <div class="spell-tag">Agonizing Blast</div>
+            <div class="spell-tag">Devil's Sight</div>
+            <div class="spell-tag">Fiendish Vigor</div>
+            <div class="spell-tag">Repelling Blast</div>
+            <div class="spell-tag">Sculptor of Flesh</div>
+            <div class="spell-tag">Thirsting Blade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SOUL TRANSFERENCE
+══════════════════════════════════════════════ -->
+<section class="section" id="soul-transfer">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Appendix I</span>
+      <h2>Soul Transference<br>Agreement</h2>
+      <div class="gold-rule center"></div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:4rem;">
+      <!-- ══ [IMAGE PLACEHOLDER] ═════════════════
+           TYPE   : Conceptual / symbolic image
+           CONTENT: Abstract visualization of soul transference —
+                    a luminous orb or wisp of light being drawn
+                    toward a dark, architectural void or portal.
+                    Dramatic, cinematic, slightly tragic. Rich
+                    colours: deep purple, crimson, gold. Could
+                    be digital art or a heavily edited photograph.
+           FILE   : assets/soul-transfer.jpg
+           DIMENSIONS: 700×500 minimum
+      ═════════════════════════════════════════ -->
+      <div class="img-placeholder" style="min-height:360px;">
+        <span class="ph-icon">✨</span>
+        <span class="ph-type">Conceptual Illustration — Soul Transference</span>
+        <p class="ph-desc">Abstract: luminous orb/wisp drawn toward a dark architectural void. Cinematic, slightly tragic. Deep purple, crimson, gold. Digital art or heavily edited photo.</p>
+      </div>
+      <div>
+        <p>
+          In consideration of the powers and benefits bestowed upon the Warlock by the Patron,
+          the Warlock agrees to transfer ownership and possession of their soul to the Patron
+          in <strong>perpetuity</strong>, in accordance with the following key terms:
+        </p>
+        <ul>
+          <li>Soul transference is <strong>irrevocable and binding</strong>. There is no right to rescind or nullify once executed.</li>
+          <li>Upon completion, the Warlock's soul becomes the exclusive property of the Patron, to be used or disposed of at the Patron's sole discretion.</li>
+          <li>The Warlock represents and warrants that they have the legal capacity to enter into this agreement.</li>
+          <li>The soul transference is not contingent upon the Patron providing any specific services or benefits.</li>
+        </ul>
+        <div class="notice" style="margin-top:1.5rem;">
+          <p>The Warlock acknowledges and understands the significance and consequences of the soul transference agreement, and voluntarily waives any and all claims or defences that may arise.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soul Renting Sub-section -->
+    <div style="max-width:820px; margin:0 auto; background:var(--void-light); border:var(--border-gold); border-left: 3px solid var(--gold); padding:2.5rem;">
+      <span class="section-label">Additional Contract</span>
+      <h3 style="margin-bottom:1rem;">Soul Renting Option</h3>
+      <p>
+        The Warlock may, solely at their discretion, choose to <strong>rent back their soul</strong>
+        for a limited period of time — subject to the following conditions:
+      </p>
+      <ol style="padding-left:1.5rem; color:var(--ash-dim); font-size:0.92rem;">
+        <li style="margin-bottom:0.6rem;">Provide written notice to the Patron clearly indicating intention to rent.</li>
+        <li style="margin-bottom:0.6rem;">Agree upon a rental period in writing, not exceeding [insert duration] from the date of written notice.</li>
+        <li style="margin-bottom:0.6rem;">Relinquish and transfer to the Patron <strong>half of all mortal possessions</strong> — including wealth, property, and material assets — upon signing.</li>
+        <li style="margin-bottom:0.6rem;">Acknowledge that during the rental period, the soul remains the property of the Patron. The Warlock shall not engage in activities that may harm, damage, or alter the soul.</li>
+        <li style="margin-bottom:0.6rem;">Acknowledge that failure to transfer agreed-upon possessions results in <em>immediate termination</em> of the rental agreement.</li>
+      </ol>
+      <a href="contact.html" class="btn btn-outline" style="margin-top:1rem;">Enquire About Soul Renting</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SOULVAULT
+══════════════════════════════════════════════ -->
+<section class="section section--blood" id="soulvault">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="section-label">Digital Pact Platform</span>
+        <h2>SoulVault™</h2>
+        <div class="gold-rule"></div>
+        <p>
+          Mammon LLC is proud to offer <strong>SoulVault</strong> — our proprietary digital
+          platform for seamless, modernised soul transference and pact execution.
+        </p>
+        <p>
+          Sign your blood pact digitally. Manage your obligations. Track your soul's
+          current valuation on the infernal markets. Receive communications from the
+          Patron via encrypted dream-channel — or, for convenience, standard push notification.
+        </p>
+        <p style="color:var(--ash-dim); font-style:italic; font-size:0.9rem;">
+          SoulVault replaces the traditional candle-and-incantation signing process
+          for standard pact execution. Blood pacts executed through SoulVault carry
+          full legal weight under the Laws of the Abyss.
+        </p>
+        <div style="display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">Get Started with SoulVault</a>
+          <a href="careers.html#apply" class="btn btn-ghost">Apply for Employment</a>
+        </div>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER] ═════════════════
+           TYPE   : Product / app mockup
+           CONTENT: SoulVault app displayed across multiple
+                    device screens (phone, tablet, desktop).
+                    Dark UI with gold accents. Shows a dashboard
+                    with "Soul Status: Transferred", "Pact
+                    Obligations: 3 active", "Dental Claims: 1
+                    pending". Corporate, polished, unsettling.
+           FILE   : assets/soulvault-devices.png
+           DIMENSIONS: 800×600, transparent bg preferred
+      ═════════════════════════════════════════ -->
+      <div class="img-placeholder" style="min-height:400px;">
+        <span class="ph-icon">💻</span>
+        <span class="ph-type">Product Mockup — SoulVault Multi-Device</span>
+        <p class="ph-desc">App shown on phone, tablet, desktop. Dark UI, gold accents. Dashboard shows "Soul Status: Transferred", "Pact Obligations: 3 active", "Dental Claims: 1 pending".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     APPENDICES ACCORDION
+══════════════════════════════════════════════ -->
+<section class="section section--darker" id="appendices">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Contract Documentation</span>
+      <h2>Pact Appendices</h2>
+      <div class="gold-rule center"></div>
+      <p style="color:var(--ash-dim); font-style:italic; max-width:560px; margin:0 auto 3rem;">
+        The following appendices are incorporated by reference into all Eldritch Pacts.
+        The Warlock is encouraged to seek clarification before signing.
+        The Patron is not liable for failure to read the fine print.
+      </p>
+    </div>
+
+    <div class="appendix-list">
+
+      <details class="appendix-item">
+        <summary>
+          <span class="app-label">Appendix A</span>
+          <h4>Inclusive Language in the Eldritch Workspace</h4>
+          <span class="app-toggle">+</span>
+        </summary>
+        <div class="appendix-body">
+          <p>It is important for the Warlock to be mindful of using inclusive language in all interactions within the Eldritch workspace. The following guidelines apply:</p>
+          <ul>
+            <li>Use gender-neutral terms — "all beings", "all creatures", "everyone" — unless otherwise directed by the Patron.</li>
+            <li>Respect cultural diversity across all planes of origin and avoid language offensive to other belief systems, however mortal.</li>
+            <li>Use preferred names and pronouns of all beings in the Eldritch workspace. Assumptions based on appearance or supernatural emanation are discouraged.</li>
+            <li>Avoid discriminatory language, slurs, or offensive terms regarding race, gender, religion, sexual orientation, plane of origin, or soul-possession status.</li>
+            <li>Be open to feedback. Ongoing awareness is required. The Eldritch workspace is a place of mutual respect — and also of considerable dark power.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="appendix-item" id="appendix-b">
+        <summary>
+          <span class="app-label">Appendix B</span>
+          <h4>Dress Code &amp; Clothing Refund Procedure</h4>
+          <span class="app-toggle">+</span>
+        </summary>
+        <div class="appendix-body">
+          <p>Warlocks are expected to maintain a professional appearance in the Eldritch workplace. Guidelines:</p>
+          <ul>
+            <li>Wear clean and well-maintained attire appropriate to the Eldritch workplace. Excessive revelation or offence is to be avoided.</li>
+            <li>Adhere to any specific dress code provided by the Patron, including required colours, symbols, or attire aligning with Eldritch powers.</li>
+            <li>Prior to any clothing purchases for workplace use, seek approval from the designated Eldritch representative.</li>
+            <li>Clothing refunds are available upon submission of a written request and receipts. The Warlock must recite the clothing oath before disbursement is authorised.</li>
+          </ul>
+          <p><em>The clothing oath: "I, [Warlock's Name], solemnly swear to use the clothing purchased for the Eldritch workplace in a responsible and professional manner... So mote it be."</em></p>
+        </div>
+      </details>
+
+      <details class="appendix-item">
+        <summary>
+          <span class="app-label">Appendix C</span>
+          <h4>Responsible Use of Eldritch Powers</h4>
+          <span class="app-toggle">+</span>
+        </summary>
+        <div class="appendix-body">
+          <p>The Warlock is required to adhere to responsible and ethical use of their Eldritch powers. The following guidelines outline expectations:</p>
+          <ul>
+            <li><strong>Avoiding Harm:</strong> Use powers in a manner that minimises harm to others, including sentient beings, creatures, and the environment — unless the Patron instructs otherwise.</li>
+            <li><strong>Respecting Consent:</strong> Obtain appropriate consent before using mind-altering spells or invocations on others.</li>
+            <li><strong>Upholding Privacy:</strong> Do not use Eldritch powers to intrude upon thoughts, memories, or private information without consent.</li>
+            <li><strong>Complying with Laws:</strong> Adhere to all applicable laws, including mortal, regional, and infernal regulations.</li>
+            <li><strong>Using Powers for Intended Purposes:</strong> Deviation from agreed-upon uses may result in revocation of Eldritch powers.</li>
+            <li><strong>Regular Review:</strong> Seek feedback from the Patron regularly. Make adjustments as required.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="appendix-item">
+        <summary>
+          <span class="app-label">Appendix F</span>
+          <h4>Tone Indicators in Written Communication</h4>
+          <span class="app-toggle">+</span>
+        </summary>
+        <div class="appendix-body">
+          <p>In the spirit of inclusive and respectful communication, the Warlock and Patron shall utilise tone indicators in written communication. Approved indicators include:</p>
+          <ul>
+            <li><strong>[TW]</strong> — Trigger Warning: content may be sensitive or triggering</li>
+            <li><strong>[CW]</strong> — Content Warning: potentially distressing content</li>
+            <li><strong>[NSFW]</strong> — Not Safe for Work: inappropriate for professional settings</li>
+            <li><strong>[Humor]</strong> — Content is intended to be humorous</li>
+            <li><strong>[Sarcasm]</strong> — Content is intended to be sarcastic</li>
+            <li><strong>[Serious]</strong> — Content is intended to be serious or formal</li>
+            <li><strong>[Half Joking]</strong> — Partially humorous with underlying seriousness</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="appendix-item">
+        <summary>
+          <span class="app-label">Appendix I</span>
+          <h4>Soul Transference Agreement (Summary)</h4>
+          <span class="app-toggle">+</span>
+        </summary>
+        <div class="appendix-body">
+          <p>Full soul transference terms. Irrevocable. Binding. See the dedicated Soul Transference section above for complete terms. The Warlock acknowledges that the soul transference is final and that failure to comply may result in severe and irreversible consequences. The Warlock voluntarily waives all claims and defences.</p>
+        </div>
+      </details>
+
+      <details class="appendix-item">
+        <summary>
+          <span class="app-label">Appendix K</span>
+          <h4>Contact Information for Key Personnel</h4>
+          <span class="app-toggle">+</span>
+        </summary>
+        <div class="appendix-body">
+          <p>Warlocks may contact the following Patron representatives via the prescribed methods. See the <a href="contact.html">Contact page</a> for full protocols and ritual instructions.</p>
+          <ul>
+            <li><strong>John Smith (CR Manager):</strong> Pigeon to tallest tower, Eastern Kingdoms. Await response by dawn.</li>
+            <li><strong>Sarah Johnson (Benefits Specialist):</strong> Summoning ritual on night of blood moon.</li>
+            <li><strong>Michael Thompson (Payroll):</strong> Incantation during lunar eclipse.</li>
+            <li><strong>Emily Davis (Dept. Manager):</strong> Traverse Forbidden Realm to Oracle's cave. Present sacred token.</li>
+            <li><strong>David Wilson (IT):</strong> Cross River of Fire. Knock thrice on cave door.</li>
+            <li><strong>The Patron:</strong> Divination ritual via Patron's sigil. Await response in dreams. Do not learn their true name.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="appendix-item">
+        <summary>
+          <span class="app-label">Appendix L</span>
+          <h4>Compatibility with Older Contracts</h4>
+          <span class="app-toggle">+</span>
+        </summary>
+        <div class="appendix-body">
+          <p><em>WARNING: The following appendix contains historical language and ideas that may be outdated or no longer aligned with current societal norms and values. This appendix is included solely for the purpose of ensuring compatibility with older contracts.</em></p>
+          <p>The Patron and its representatives do not endorse or condone any language or ideas that are discriminatory, offensive, or harmful. Any questions regarding this appendix should be directed to the Creature Resources department.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+            <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+          </svg>
+          Mammon LLC
+        </a>
+        <p><em>"Greed is not merely good — it is divine. And we are its faithful servants."</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#leadership">Leadership</a></li>
+          <li><a href="about.html#departments">Departments</a></li>
+          <li><a href="about.html#pledge">Eldritch Pledge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="pact.html">Eldritch Pacts</a></li>
+          <li><a href="pact.html#soul-transfer">Soul Transference</a></li>
+          <li><a href="pact.html#soulvault">SoulVault™</a></li>
+          <li><a href="pact.html#spells">Spells &amp; Invocations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Opportunities</h5>
+        <ul>
+          <li><a href="careers.html">Open Positions</a></li>
+          <li><a href="careers.html#apply">How to Apply</a></li>
+          <li><a href="contact.html">Contact CR</a></li>
+          <li><a href="pact.html#appendix-b">Dress Code</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="legal">
+        All Eldritch Pacts governed by Laws of the Abyss. Soul transference irrevocable. Fine print binding regardless of comprehension. SoulVault™ is a registered trademark of Mammon LLC.
+      </p>
+      <div class="copyright">© MAMMON LLC · ALL RIGHTS RESERVED · ALL SOULS RESERVED</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.style.display === 'flex';
+      links.style.display = open ? '' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '72px';
+      links.style.left = '0'; links.style.right = '0';
+      links.style.background = 'rgba(5,0,10,0.97)';
+      links.style.padding = '1.5rem 2.5rem';
+      links.style.borderBottom = '1px solid rgba(201,168,76,0.15)';
+    });
+  }
+</script>
+</body>
+</html>

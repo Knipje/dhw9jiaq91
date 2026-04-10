@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers — Mammon LLC</title>
+  <meta name="description" content="Join the Mammon LLC family. We are seeking fiendishly clever individuals for positions in worldly affairs, dark arts, and chaos engineering." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Job Posting Layout ───────────────── */
+    .posting-wrap {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .posting-wrap { grid-template-columns: 1fr; }
+    }
+
+    /* ── Sidebar ──────────────────────────── */
+    .job-sidebar {
+      position: sticky;
+      top: 96px;
+    }
+    .sidebar-card {
+      background: var(--void-light);
+      border: var(--border-gold);
+      border-top: 3px solid var(--blood-bright);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-dim);
+      margin-bottom: 1.25rem;
+    }
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      font-size: 0.85rem;
+    }
+    .meta-row:last-child { border-bottom: none; }
+    .meta-label {
+      color: var(--ash-dim);
+      font-style: italic;
+    }
+    .meta-value {
+      color: var(--gold-pale);
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+
+    /* ── Posting Body ─────────────────────── */
+    .posting-section {
+      margin-bottom: 3rem;
+    }
+    .posting-section h3 {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-pale);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .posting-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .posting-section ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--ash-dim);
+      font-size: 0.95rem;
+    }
+    .posting-section ul li::before {
+      content: '⛧';
+      position: absolute;
+      left: 0;
+      color: var(--blood-bright);
+      font-size: 0.7rem;
+      top: 0.2rem;
+    }
+
+    /* ── Benefits Grid ────────────────────── */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.15);
+      margin: 1.5rem 0;
+    }
+    .benefit-item {
+      background: var(--void-mid);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .benefit-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .benefit-item h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-pale);
+      margin-bottom: 0.25rem;
+    }
+    .benefit-item p {
+      font-size: 0.8rem;
+      color: var(--ash-dim);
+      font-style: italic;
+      margin: 0;
+    }
+    @media (max-width: 580px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Application Steps ────────────────── */
+    .steps-wrap {
+      counter-reset: step;
+    }
+    .step-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      align-items: start;
+    }
+    .step-num {
+      counter-increment: step;
+      width: 48px;
+      height: 48px;
+      background: var(--void-light);
+      border: 1px solid var(--blood-bright);
+      color: var(--gold);
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-body h4 {
+      font-size: 1rem;
+      color: var(--gold-pale);
+      margin-bottom: 0.4rem;
+    }
+    .step-body p {
+      color: var(--ash-dim);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-bottom: 0;
+    }
+
+    /* ── Incantation Block ────────────────── */
+    .incantation {
+      background: var(--void-light);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2.5rem;
+      font-style: italic;
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--ash-dim);
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    .incantation::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      left: 1rem;
+      font-size: 4rem;
+      color: var(--gold-dim);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    /* ── Other Listings (Compact) ─────────── */
+    .listing-row {
+      border: var(--border-gold);
+      border-top: 2px solid var(--blood-bright);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1px;
+      background: var(--void-mid);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+    .listing-row:hover {
+      background: var(--void-light);
+    }
+    .listing-row h4 {
+      font-size: 1rem;
+      color: var(--gold-pale);
+      margin-bottom: 0.25rem;
+    }
+    .listing-tags {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-family: var(--font-head);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid rgba(201,168,76,0.2);
+      color: var(--ash-dim);
+    }
+    .tag.infernal { border-color: var(--blood); color: var(--blood-bright); }
+    .listing-arrow {
+      color: var(--gold-dim);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+      <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+    </svg>
+    Mammon LLC
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="pact.html">Services</a></li>
+    <li><a href="careers.html" class="active">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="pact.html#soul-transfer" class="nav-cta">Sign the Pact</a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════════════ -->
+<header class="page-hero">
+  <span class="section-label">Careers at Mammon LLC</span>
+  <h1>Join the Infernal Family</h1>
+  <p class="lead">We are seeking fiendishly clever individuals with a passion for success and a willingness to forfeit their soul. Equal opportunity across all levels of evil.</p>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     CULTURE BANNER
+══════════════════════════════════════════════ -->
+
+<!-- ══ [IMAGE PLACEHOLDER] ═══════════════════
+     TYPE   : Wide culture / recruitment banner
+     CONTENT: A wide editorial photograph of Mammon LLC
+              employees — a mix of formally dressed people
+              and hooded figures — gathered in a dramatic
+              atrium or hallway. Laughing, seemingly happy.
+              Branded lanyards. Red ambient light. One person
+              has a faint glow around their hands. Corporate
+              team photo energy with eldritch undertones.
+     FILE   : assets/careers-banner.jpg
+     DIMENSIONS: 1200×400 minimum, wide crop
+════════════════════════════════════════════ -->
+<div class="img-placeholder" style="height:340px; border-radius:0; border:none; border-top:1px solid rgba(201,168,76,0.15); border-bottom:1px solid rgba(201,168,76,0.15);">
+  <span class="ph-icon">👥</span>
+  <span class="ph-type">Wide Culture Banner — Team Photo</span>
+  <p class="ph-desc">Editorial team photo: corporate &amp; hooded figures in dramatic atrium. Branded lanyards, red ambient light. Happy. One figure has glowing hands. Wide crop.</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     FEATURED JOB POSTING
+══════════════════════════════════════════════ -->
+<section class="section" id="featured">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Featured Position</span>
+      <h2>Junior Supervisor<br>of Worldly Affairs</h2>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div class="posting-wrap">
+
+      <!-- Main Content -->
+      <div>
+        <p style="font-size:1.1rem; margin-bottom:2.5rem;">
+          Mammon LLC, a leading player in the infernal business world, is seeking a
+          <strong>Junior Supervisor of Worldly Affairs</strong> to join our team.
+          As a Junior Supervisor of Worldly Affairs, you will be responsible for
+          overseeing the operations of our worldly ventures — from manipulating stock
+          prices to causing natural disasters.
+        </p>
+
+        <div class="posting-section">
+          <h3>Responsibilities</h3>
+          <ul>
+            <li>Planning and executing diabolical schemes to achieve our corporate objectives across all mortal territories and jurisdictions</li>
+            <li>Monitoring and manipulating global markets to increase our profits; experience with infernal arbitrage a distinct advantage</li>
+            <li>Manipulating natural events to our advantage — meteorological, geological, and other elemental disruptions as directed by the Patron</li>
+            <li>Managing the minions of the abyss in the mortal realm, including performance reviews, scheduling, and the annual Minion Excellence Awards</li>
+            <li>Compiling and submitting regular reports to your designated manager via occult ritual (see Appendix E: Reporting Obligations)</li>
+          </ul>
+        </div>
+
+        <div class="posting-section">
+          <h3>Qualifications</h3>
+          <ul>
+            <li>A deep understanding of the dark arts, including demonology, necromancy, and blood magic — intermediate proficiency minimum; mastery preferred</li>
+            <li>Strong leadership skills to manage the hordes of the abyss, including conflict resolution, delegation, and infernal motivational techniques</li>
+            <li>Ability to work well under pressure and to multitask in a fast-paced environment; the end of days is a demanding timeline</li>
+            <li>Willingness to forfeit one's soul to the Abyss for the sake of Mammon LLC's continued success — this is non-negotiable</li>
+            <li>Familiarity with the Laws of the Abyss and applicable mortal regulatory frameworks preferred</li>
+            <li>Proficiency in at least one eldritch invocation (see Appendix D for a full list of approved spells)</li>
+          </ul>
+        </div>
+
+        <div class="posting-section">
+          <h3>Compensation &amp; Benefits</h3>
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <span class="benefit-icon">⚡</span>
+              <div>
+                <h4>Eldritch Blast Salary</h4>
+                <p>Competitive compensation paid in Eldritch Blast. Market-rate benchmarked against all major infernal exchanges.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">📚</span>
+              <div>
+                <h4>Arcane Knowledge Stipend</h4>
+                <p>Access to knowledge beyond the realm of mortals — exclusive to those who have executed the Eldritch Contract.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">🦷</span>
+              <div>
+                <h4>Free Dental</h4>
+                <p>Comprehensive dental coverage up to a pre-approved amount in gold pieces. Submit receipts to Sarah Johnson via blood moon ritual.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">♾️</span>
+              <div>
+                <h4>Eternal Employment</h4>
+                <p>Upon soul forfeiture, you join the eternal ranks of Mammon LLC. Contract duration: indefinite. Termination clause: complex.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="posting-section" id="apply">
+          <h3>How to Apply</h3>
+          <p>
+            To apply for this position, please submit your application package to
+            <a href="mailto:HR@mammonllc.com">HR@mammonllc.com</a>. Your package must include:
+          </p>
+          <div class="steps-wrap">
+            <div class="step-item">
+              <div class="step-num">I</div>
+              <div class="step-body">
+                <h4>Your Resume &amp; Cover Letter</h4>
+                <p>Standard professional documentation detailing your experience in the dark arts, market manipulation, and horde management. Supernatural accomplishments welcome.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">II</div>
+              <div class="step-body">
+                <h4>Execute the Blood Pact</h4>
+                <p>Write your name in your own blood on a clean piece of paper. Recite the following incantation aloud:</p>
+                <div class="incantation">
+                  I, [insert your name], do hereby pledge my soul to Mammon LLC for all eternity.
+                  I swear to uphold the values and goals of the company, to use my knowledge of the
+                  dark arts to further our diabolical schemes, and to devote my life to the pursuit
+                  of Mammon LLC's success.
+                </div>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">III</div>
+              <div class="step-body">
+                <h4>Seal the Pact</h4>
+                <p>Burn the paper bearing your blood signature in the flame of a black candle and recite the following:</p>
+                <div class="incantation" style="font-size:1.2rem; text-align:center; padding:1.5rem;">
+                  So mote it be.
+                </div>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">IV</div>
+              <div class="step-body">
+                <h4>Alternatively: Use SoulVault™</h4>
+                <p>You may also complete the blood pact digitally using the <strong>SoulVault</strong> app, available on all mortal devices. The app handles incantation verification automatically.</p>
+                <a href="pact.html#soulvault" class="btn btn-ghost" style="margin-top:0.75rem; font-size:0.65rem;">Open SoulVault →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="notice">
+            <p>
+              Mammon LLC is an equal opportunity employer and encourages applicants from all levels of evil.
+              If you are a fiendishly clever individual with a passion for success, we invite you to join
+              our infernal family. We do not discriminate on the basis of race, gender, religion, plane of origin,
+              or current soul-possession status.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="job-sidebar">
+        <div class="sidebar-card">
+          <h4>Position Details</h4>
+          <div class="meta-row">
+            <span class="meta-label">Title</span>
+            <span class="meta-value">Jr. Supervisor,<br>Worldly Affairs</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Department</span>
+            <span class="meta-value">Dark Arts</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">Mortal Realm<br>(hybrid / abyss)</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Type</span>
+            <span class="meta-value">Full-Time · Eternal</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Salary</span>
+            <span class="meta-value">Eldritch Blast<br>(competitive)</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Soul Required</span>
+            <span class="meta-value">Yes (all of it)</span>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h4>Apply Now</h4>
+          <p style="font-size:0.85rem; color:var(--ash-dim); font-style:italic; margin-bottom:1.5rem;">
+            Submit your resume, cover letter, and signed blood pact to:
+          </p>
+          <a href="mailto:HR@mammonllc.com" class="btn btn-primary" style="display:block; text-align:center; margin-bottom:0.75rem;">
+            Email HR@mammonllc.com
+          </a>
+          <a href="pact.html#soulvault" class="btn btn-ghost" style="display:block; text-align:center;">
+            Apply via SoulVault™
+          </a>
+        </div>
+
+        <!-- ══ [IMAGE PLACEHOLDER — Sidebar] ════
+             TYPE   : Small decorative/brand illustration
+             CONTENT: The Mammon LLC sigil / corporate seal.
+                      An ornate circular emblem featuring the
+                      M logo surrounded by occult script and
+                      a pentagram border. Gold on dark. Could
+                      be illustrated or photo of a wax seal.
+             FILE   : assets/mammon-seal.png
+             DIMENSIONS: 300×300, square, transparent bg
+        ════════════════════════════════════════ -->
+        <div class="img-placeholder" style="height:220px;">
+          <span class="ph-icon">⛧</span>
+          <span class="ph-type">Brand Illustration — Corporate Seal</span>
+          <p class="ph-desc">Ornate circular corporate seal: M logo, occult script border, pentagram. Gold on dark. Illustrated or photographed wax seal.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     OTHER OPEN POSITIONS
+══════════════════════════════════════════════ -->
+<section class="section section--dark" id="all-positions">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Additional Openings</span>
+      <h2>More Open Positions</h2>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div>
+      <a href="contact.html" class="listing-row">
+        <div>
+          <h4>Senior Chaos Engineer — Global Markets Division</h4>
+          <div class="listing-tags">
+            <span class="tag infernal">Infernal</span>
+            <span class="tag">Financial Disruption</span>
+            <span class="tag">Senior</span>
+          </div>
+        </div>
+        <span class="listing-arrow">→</span>
+      </a>
+      <a href="contact.html" class="listing-row">
+        <div>
+          <h4>Minion Horde Manager — Eastern Territories</h4>
+          <div class="listing-tags">
+            <span class="tag infernal">Infernal</span>
+            <span class="tag">Management</span>
+            <span class="tag">Mid-Level</span>
+          </div>
+        </div>
+        <span class="listing-arrow">→</span>
+      </a>
+      <a href="contact.html" class="listing-row">
+        <div>
+          <h4>Eldritch Compliance Officer — Pact Integrity</h4>
+          <div class="listing-tags">
+            <span class="tag">Compliance &amp; Legal</span>
+            <span class="tag">Fine Print Specialist</span>
+          </div>
+        </div>
+        <span class="listing-arrow">→</span>
+      </a>
+      <a href="contact.html" class="listing-row">
+        <div>
+          <h4>Soul Acquisition Analyst — SoulVault™ Platform</h4>
+          <div class="listing-tags">
+            <span class="tag">Marketing &amp; Sales</span>
+            <span class="tag">Digital</span>
+            <span class="tag">Entry Level</span>
+          </div>
+        </div>
+        <span class="listing-arrow">→</span>
+      </a>
+      <a href="contact.html" class="listing-row">
+        <div>
+          <h4>Research Warlock — Forbidden Knowledge Division</h4>
+          <div class="listing-tags">
+            <span class="tag infernal">Infernal</span>
+            <span class="tag">R&amp;D</span>
+            <span class="tag">Clearance Required</span>
+          </div>
+        </div>
+        <span class="listing-arrow">→</span>
+      </a>
+      <a href="contact.html" class="listing-row">
+        <div>
+          <h4>Creature Resources Business Partner</h4>
+          <div class="listing-tags">
+            <span class="tag">HR / Creature Resources</span>
+            <span class="tag">Mid-Level</span>
+          </div>
+        </div>
+        <span class="listing-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="notice" style="margin-top:2rem;">
+      <p>
+        Don't see a role that suits your particular flavour of malevolence?
+        <a href="contact.html">Contact our Creature Resources team</a> to discuss
+        opportunities aligned with your dark arts specialisation.
+        Speculative applications accepted. Souls evaluated individually.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+            <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+          </svg>
+          Mammon LLC
+        </a>
+        <p><em>"Greed is not merely good — it is divine. And we are its faithful servants."</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#leadership">Leadership</a></li>
+          <li><a href="about.html#departments">Departments</a></li>
+          <li><a href="about.html#pledge">Eldritch Pledge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="pact.html">Eldritch Pacts</a></li>
+          <li><a href="pact.html#soul-transfer">Soul Transference</a></li>
+          <li><a href="pact.html#soulvault">SoulVault™</a></li>
+          <li><a href="pact.html#spells">Spells &amp; Invocations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Opportunities</h5>
+        <ul>
+          <li><a href="careers.html">Open Positions</a></li>
+          <li><a href="careers.html#apply">How to Apply</a></li>
+          <li><a href="contact.html">Contact CR</a></li>
+          <li><a href="pact.html#appendix-b">Dress Code</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="legal">
+        Mammon LLC is governed by the Laws of the Abyss. All pacts are irrevocable and binding. Soul transference is permanent and non-reversible.
+        Equal opportunity employer across all levels of evil. SoulVault™ is a registered trademark. By reading this page you have been catalogued.
+      </p>
+      <div class="copyright">© MAMMON LLC · ALL RIGHTS RESERVED · ALL SOULS RESERVED</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.style.display === 'flex';
+      links.style.display = open ? '' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '72px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(5,0,10,0.97)';
+      links.style.padding = '1.5rem 2.5rem';
+      links.style.borderBottom = '1px solid rgba(201,168,76,0.15)';
+    });
+  }
+</script>
+</body>
+</html>

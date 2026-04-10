@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Mammon LLC</title>
+  <meta name="description" content="Contact Mammon LLC. Each department reachable via its prescribed occult ritual. General enquiries: divination via Patron's sigil." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Contact Grid ─────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Contact Form (styled, non-functional placeholder) */
+    .contact-form {
+      background: var(--void-light);
+      border: var(--border-gold);
+      border-top: 3px solid var(--blood-bright);
+      padding: 2.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--void-mid);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid var(--gold-dim);
+      color: var(--ash);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--ash-dim);
+      opacity: 0.5;
+      font-style: italic;
+    }
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .form-group select option {
+      background: var(--void-mid);
+      color: var(--ash);
+    }
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--ash-dim);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .form-check input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      accent-color: var(--blood-bright);
+    }
+
+    /* ── Contact Cards ────────────────────── */
+    .contact-card {
+      background: var(--void-light);
+      border: var(--border-gold);
+      padding: 2rem;
+      margin-bottom: 1px;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    .contact-card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--void-mid);
+      border: 1px solid var(--blood);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .contact-card h4 {
+      font-size: 0.9rem;
+      color: var(--gold-pale);
+      margin-bottom: 0.2rem;
+    }
+    .contact-card .contact-title {
+      font-family: var(--font-head);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blood-bright);
+      margin-bottom: 0.6rem;
+    }
+    .contact-card .contact-method {
+      font-size: 0.82rem;
+      color: var(--ash-dim);
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* ── Map / Location Placeholder ──────── */
+    .location-strip {
+      background: var(--void-mid);
+      border: var(--border-gold);
+      border-top: 2px solid var(--blood-bright);
+      padding: 0;
+      overflow: hidden;
+    }
+    .location-img-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 640px) {
+      .location-img-row { grid-template-columns: 1fr; }
+    }
+    .location-info {
+      padding: 2.5rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      border-top: var(--border-gold);
+    }
+    @media (max-width: 640px) {
+      .location-info { grid-template-columns: 1fr; }
+    }
+    .location-item h5 {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+    .location-item p {
+      font-size: 0.85rem;
+      color: var(--ash-dim);
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* ── Divination Note ──────────────────── */
+    .divination-box {
+      background: var(--void-light);
+      border: 1px solid var(--gold-dim);
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2.5rem;
+      margin-top: 2.5rem;
+      font-style: italic;
+      color: var(--ash-dim);
+      font-size: 0.9rem;
+    }
+    .divination-box strong {
+      color: var(--gold-pale);
+      font-style: normal;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+      <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+    </svg>
+    Mammon LLC
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="pact.html">Services</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="pact.html#soul-transfer" class="nav-cta">Sign the Pact</a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════════════ -->
+<header class="page-hero">
+  <span class="section-label">Reach Us</span>
+  <h1>Contact Mammon LLC</h1>
+  <p class="lead">Our team is reachable via a variety of channels — both conventional and occult. Please select the appropriate ritual for your department of interest.</p>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     MAIN CONTACT SECTION
+══════════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- Contact Form -->
+      <div>
+        <span class="section-label">General Enquiries</span>
+        <h2>Send a Mortal<br>Transmission</h2>
+        <div class="gold-rule"></div>
+        <p style="color:var(--ash-dim); font-style:italic; margin-bottom:2rem;">
+          For enquiries not requiring an occult ritual, please complete the form below.
+          Messages are received by the Patron's mortal correspondence office and
+          forwarded via dream-channel within three to five business days — or sooner
+          if the stars align.
+        </p>
+
+        <div class="contact-form">
+          <!-- NOTE: This form is presentational. Wire to a backend form handler
+               (e.g. Formspree, Netlify Forms) for GitHub Pages deployment.
+               Add action="https://formspree.io/f/YOUR_ID" method="POST" to the form tag. -->
+          <form>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your mortal name (or alias)" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="soul@domain.com" autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="dept">Department</label>
+              <select id="dept" name="department">
+                <option value="" disabled selected>Select area of enquiry…</option>
+                <option value="cr">Creature Resources</option>
+                <option value="pact">Pact &amp; Contract Services</option>
+                <option value="soul">Soul Acquisition / SoulVault™</option>
+                <option value="careers">Careers &amp; Applications</option>
+                <option value="dental">Dental Claims</option>
+                <option value="other">Other (specify below)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" placeholder="Describe your enquiry. Arcane terminology welcomed."></textarea>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="soul-consent" name="soul-consent" />
+              <label for="soul-consent" style="display:inline; font-size:0.82rem;">
+                I acknowledge that by submitting this form I have been observed, catalogued,
+                and that my soul's current market valuation may be assessed as part of
+                the enquiry process.
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Submit Transmission
+            </button>
+          </form>
+        </div>
+
+        <div class="divination-box">
+          <strong>Alternative: Divination Ritual</strong>
+          For any enquiry where conventional communication is inadequate — or where the
+          matter concerns the Patron directly — perform a divination ritual using the
+          Patron's sigil and await a response in your dreams. The Patron's representatives
+          may also communicate via telepathy, omen, or unexplained atmospheric phenomena.
+        </div>
+      </div>
+
+      <!-- Sidebar: Contact Directory -->
+      <aside>
+        <span class="section-label">Personnel Directory</span>
+        <h3 style="margin-bottom:1.5rem; font-size:1.2rem;">Departmental Contacts</h3>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">📮</div>
+          <div>
+            <h4>John Smith</h4>
+            <div class="contact-title">CR Manager — Creature Resources</div>
+            <p class="contact-method">Send pigeon to the tallest tower in the Eastern Kingdoms marked "CR Manager John Smith, Patron's Castle." Await response by dawn. Do not send a second pigeon.</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">🌕</div>
+          <div>
+            <h4>Sarah Johnson</h4>
+            <div class="contact-title">Benefits Specialist</div>
+            <p class="contact-method">Perform the summoning ritual on the night of the blood moon. Recite: <em>"Sarah Johnson, Benefits Specialist of the Patron, heed my call!"</em> Await vision or dream with further instructions. Dental claims require valid receipts.</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">🌑</div>
+          <div>
+            <h4>Michael Thompson</h4>
+            <div class="contact-title">Payroll Administrator</div>
+            <p class="contact-method">During the next lunar eclipse, recite: <em>"Michael Thompson, Payroll Administrator of the Patron, reveal thyself!"</em> Await a sign or omen to guide next steps. Payroll enquiries are processed in gold pieces.</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">🏔️</div>
+          <div>
+            <h4>Emily Davis</h4>
+            <div class="contact-title">Department Manager</div>
+            <p class="contact-method">Traverse the treacherous mountains of the Forbidden Realm, locate the hidden cave of the Oracle, and present the sacred token of the Patron to gain an audience. Appointment recommended.</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">🔥</div>
+          <div>
+            <h4>David Wilson</h4>
+            <div class="contact-title">IT Helpdesk Technician</div>
+            <p class="contact-method">Follow the path of the seven stars, cross the River of Fire, and reach the cave of the IT Helpdesk. Knock thrice. Say: <em>"David Wilson, I seek thy guidance in matters of IT support."</em> Await audience. Average response: 2–3 business moons.</p>
+          </div>
+        </div>
+
+        <div class="contact-card" style="background: radial-gradient(ellipse at 30% 30%, #1A0005 0%, var(--void-light) 100%);">
+          <div class="contact-card-icon" style="border-color: var(--gold-dim); font-size:1.8rem;">⛧</div>
+          <div>
+            <h4>[REDACTED]</h4>
+            <div class="contact-title">The Patron · Eternal Chairman</div>
+            <p class="contact-method">Perform a divination ritual using the Patron's sigil. Await response in dreams. Do not attempt to learn the Patron's true name. Do not stare directly at the sigil for more than seven seconds.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <a href="mailto:HR@mammonllc.com" class="btn btn-outline" style="display:block; text-align:center;">
+            ✉ HR@mammonllc.com
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     OFFICE LOCATIONS
+══════════════════════════════════════════════ -->
+<section class="section section--dark">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Our Offices</span>
+      <h2>Where to Find Us</h2>
+      <div class="gold-rule center"></div>
+    </div>
+
+    <div class="location-strip">
+      <div class="location-img-row">
+
+        <!-- ══ [IMAGE PLACEHOLDER — HQ] ═══════
+             TYPE   : Architectural / exterior photograph
+             CONTENT: The Mammon LLC global headquarters.
+                      A brutal, imposing skyscraper — glass
+                      and dark stone. The building should look
+                      slightly wrong: perhaps asymmetric, or
+                      with windows arranged in a subtle pattern.
+                      Shot at dusk, lit from within, red-tinged.
+             FILE   : assets/office-hq.jpg
+             DIMENSIONS: 600×400 minimum
+        ═════════════════════════════════════ -->
+        <div class="img-placeholder" style="min-height:260px; border:none; border-right:var(--border-gold);">
+          <span class="ph-icon">🏙️</span>
+          <span class="ph-type">Exterior — Global HQ</span>
+          <p class="ph-desc">Imposing asymmetric skyscraper at dusk, lit red from within. Dark glass and stone. Windows in a subtly wrong pattern.</p>
+        </div>
+
+        <!-- ══ [IMAGE PLACEHOLDER — ABYSS OFFICE] ═
+             TYPE   : Conceptual / surreal photograph
+             CONTENT: The Abyss branch office. A vast, dark
+                      hall — vaulted ceiling lost in shadow,
+                      pillars of black obsidian, desks arranged
+                      in precise rows, figures working. Lit by
+                      floating orbs of cold red light. Corporate
+                      surrealism. Lovecraftian scale.
+             FILE   : assets/office-abyss.jpg
+             DIMENSIONS: 600×400 minimum
+        ═════════════════════════════════════ -->
+        <div class="img-placeholder" style="min-height:260px; border:none; border-right:var(--border-gold);">
+          <span class="ph-icon">🌀</span>
+          <span class="ph-type">Interior — Abyss Branch</span>
+          <p class="ph-desc">Vast dark hall, obsidian pillars, rows of desks, figures working under floating red orbs. Corporate surrealism at Lovecraftian scale.</p>
+        </div>
+
+        <!-- ══ [IMAGE PLACEHOLDER — MORTAL REALM] ═
+             TYPE   : Standard office interior photograph
+             CONTENT: The mortal realm satellite office.
+                      Looks almost normal — open plan, exposed
+                      brick, plants. But the plants are slightly
+                      wrong. The shadows fall at odd angles.
+                      One framed print on the wall is a pentagram
+                      in a thin gold frame. Subtle wrongness.
+             FILE   : assets/office-mortal.jpg
+             DIMENSIONS: 600×400 minimum
+        ═════════════════════════════════════ -->
+        <div class="img-placeholder" style="min-height:260px; border:none;">
+          <span class="ph-icon">🌿</span>
+          <span class="ph-type">Interior — Mortal Realm Office</span>
+          <p class="ph-desc">Seemingly normal open-plan office. But: plants slightly wrong, shadows at odd angles, one small pentagram framed in gold on the wall. Subtle wrongness throughout.</p>
+        </div>
+
+      </div>
+
+      <div class="location-info">
+        <div class="location-item">
+          <h5>Global Headquarters</h5>
+          <p>The Mammon Tower<br>Undisclosed District<br>Governed by the Laws of the Abyss</p>
+        </div>
+        <div class="location-item">
+          <h5>Abyss Division</h5>
+          <p>The Pit, Level 7<br>Adjacent to the Forgotten Realm<br>Access via approved ritual only</p>
+        </div>
+        <div class="location-item">
+          <h5>Mortal Realm Office</h5>
+          <p>An unremarkable building<br>In your city, probably<br>Hours: Dawn to Second Dark</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+            <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+          </svg>
+          Mammon LLC
+        </a>
+        <p><em>"Greed is not merely good — it is divine. And we are its faithful servants."</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#leadership">Leadership</a></li>
+          <li><a href="about.html#departments">Departments</a></li>
+          <li><a href="about.html#pledge">Eldritch Pledge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="pact.html">Eldritch Pacts</a></li>
+          <li><a href="pact.html#soul-transfer">Soul Transference</a></li>
+          <li><a href="pact.html#soulvault">SoulVault™</a></li>
+          <li><a href="pact.html#spells">Spells &amp; Invocations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Opportunities</h5>
+        <ul>
+          <li><a href="careers.html">Open Positions</a></li>
+          <li><a href="careers.html#apply">How to Apply</a></li>
+          <li><a href="contact.html">Contact CR</a></li>
+          <li><a href="pact.html#appendix-b">Dress Code</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="legal">
+        Mammon LLC is governed by the Laws of the Abyss. All pacts are irrevocable. By visiting this page your soul has been assessed.
+        SoulVault™ is a registered trademark. HR@mammonllc.com. Equal opportunity employer across all levels of evil.
+      </p>
+      <div class="copyright">© MAMMON LLC · ALL RIGHTS RESERVED · ALL SOULS RESERVED</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.style.display === 'flex';
+      links.style.display = open ? '' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '72px';
+      links.style.left = '0'; links.style.right = '0';
+      links.style.background = 'rgba(5,0,10,0.97)';
+      links.style.padding = '1.5rem 2.5rem';
+      links.style.borderBottom = '1px solid rgba(201,168,76,0.15)';
+    });
+  }
+</script>
+</body>
+</html>
