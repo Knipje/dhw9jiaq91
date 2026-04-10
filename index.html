@@ -1,5 +1,696 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mammon LLC — Infernal Holdings &amp; Worldly Ventures</title>
+  <meta name="description" content="Mammon LLC: A leading player in the infernal business world. Manipulating markets, cultivating chaos, and acquiring souls since before recorded history." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Hero ─────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 6rem;
+    }
+
+    /* ── [IMAGE PLACEHOLDER] Hero Background ─ */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* Overlay always present so text stays legible over any image */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(5,0,10,1) 0%,
+        rgba(5,0,10,0.65) 40%,
+        rgba(5,0,10,0.3) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-bg .img-placeholder {
+      height: 100%;
+      border: none;
+    }
+    .hero-bg .img-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--void) 0%, transparent 60%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 2rem;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--blood-bright);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--blood-bright);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 700;
+      color: var(--gold-pale);
+      line-height: 1.05;
+      margin-bottom: 0.25rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-head);
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ash-dim);
+      margin-bottom: 2.5rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .hero-desc {
+      max-width: 520px;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ash-dim);
+      margin-bottom: 3rem;
+      animation: fadeUp 1s ease 0.35s both;
+    }
+    .hero-desc strong { color: var(--gold); font-style: normal; }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+
+    /* Pentagram watermark */
+    .hero-penta {
+      position: absolute;
+      right: -6rem;
+      bottom: 2rem;
+      width: 420px;
+      height: 420px;
+      opacity: 0.03;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── Ticker ───────────────────────────── */
+    .ticker-wrap {
+      background: var(--blood);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      overflow: hidden;
+      height: 42px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-label {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      background: var(--void);
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      border-right: 1px solid rgba(201,168,76,0.2);
+      flex-shrink: 0;
+    }
+    .ticker-track {
+      display: flex;
+      animation: tickerScroll 40s linear infinite;
+      will-change: transform;
+    }
+    .ticker-item {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      white-space: nowrap;
+      padding: 0 2.5rem;
+    }
+    .ticker-item .up   { color: #4ADE80; margin-left: 0.5rem; }
+    .ticker-item .down { color: #F87171; margin-left: 0.5rem; }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Stats Row ────────────────────────── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 900px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .stats-row { grid-template-columns: 1fr; } }
+
+    /* ── Services ─────────────────────────── */
+    .services-intro {
+      max-width: 640px;
+    }
+
+    /* ── Feature Row ──────────────────────── */
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: var(--border-gold);
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 760px) { .feature-row { grid-template-columns: 1fr; } }
+
+    .feature-row .feature-text {
+      padding: 4rem 3rem;
+      border-right: var(--border-gold);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 760px) {
+      .feature-row .feature-text { border-right: none; border-bottom: var(--border-gold); }
+    }
+
+    .feature-row .feature-img { min-height: 400px; }
+
+    /* ── Testimonial ──────────────────────── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: var(--border-gold);
+    }
+    @media (max-width: 760px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    .testimonial-item {
+      padding: 2.5rem 2rem;
+      border-right: var(--border-gold);
+    }
+    .testimonial-item:last-child { border-right: none; }
+    .testimonial-item blockquote {
+      border-left: none;
+      padding: 0;
+      background: none;
+      font-size: 1rem;
+      margin: 0 0 1.5rem;
+    }
+    .testimonial-author {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blood-bright);
+    }
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--ash-dim);
+      font-style: italic;
+    }
+
+    /* ── CTA Banner ───────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--void-light) 0%, #1A0008 100%);
+      border: var(--border-gold);
+      border-top: 3px solid var(--blood-bright);
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+    @media (max-width: 700px) { .cta-banner { grid-template-columns: 1fr; } }
+    .cta-banner h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .cta-banner p { color: var(--ash-dim); font-style: italic; margin: 0; }
+  </style>
+</head>
 <body>
-sex
-<\body>
-<\html>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <!-- Mammon "M" logomark with subtle horns -->
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <!-- horns -->
+      <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+      <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+    </svg>
+    Mammon LLC
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="pact.html">Services</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <a href="pact.html#soul-transfer" class="nav-cta">Sign the Pact</a>
+  <div class="nav-toggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero">
+
+  <!-- ══ [IMAGE PLACEHOLDER] ══════════════════
+       TYPE   : Full-bleed hero background photograph
+       CONTENT: An aerial, wide-angle shot of a sprawling
+                city at dusk — finance district skyscrapers,
+                rivers of amber traffic, a sky bruised deep
+                crimson and violet. Dark, cinematic, slightly
+                ominous. No people visible. Shot from above
+                as if from an impossible height.
+       FILE   : assets/hero-bg.jpg
+       DIMENSIONS: 1920×1080 minimum, WebP preferred
+  ════════════════════════════════════════════ -->
+  <div class="hero-bg">
+    <div class="img-placeholder" style="height:100%;">
+      <span class="ph-icon">🌆</span>
+      <span class="ph-type">Hero Background — Full Bleed</span>
+      <p class="ph-desc">Aerial photograph of city skyline at dusk — crimson sky, financial district, shot from impossible height. Cinematic &amp; ominous.</p>
+    </div>
+  </div>
+
+  <!-- Pentagram watermark -->
+  <svg class="hero-penta" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="100,10 120,70 180,70 133,108 150,168 100,130 50,168 67,108 20,70 80,70"
+             fill="none" stroke="#C9A84C" stroke-width="1"/>
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Infernal Holdings &amp; Worldly Ventures</div>
+    <h1 class="fade-up">Mammon<br>LLC</h1>
+    <p class="hero-tagline fade-up fade-up-delay-1">Greed. Power. Eternity.</p>
+    <p class="hero-desc fade-up fade-up-delay-2">
+      A <strong>leading player</strong> in the infernal business world.
+      Manipulating global markets, cultivating strategic disasters,
+      and delivering unparalleled returns since before recorded history.
+    </p>
+    <div class="hero-actions">
+      <a href="pact.html" class="btn btn-primary">Explore Our Services</a>
+      <a href="careers.html" class="btn btn-outline">View Open Positions</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     MARKET TICKER
+══════════════════════════════════════════════ -->
+<div class="ticker-wrap" aria-label="Infernal market ticker">
+  <div class="ticker-label">INFERNAL MARKETS</div>
+  <div class="ticker-track">
+    <!-- Duplicated for seamless loop -->
+    <span class="ticker-item">SOULS · 666.66 <span class="up">▲ 13.3%</span></span>
+    <span class="ticker-item">ELDRITCH BLAST · 42.00 <span class="down">▼ 0.7%</span></span>
+    <span class="ticker-item">HELLFIRE FUTURES · 999.9 <span class="up">▲ 6.6%</span></span>
+    <span class="ticker-item">MORTAL DESPAIR INDEX · 1,313 <span class="up">▲ 4.2%</span></span>
+    <span class="ticker-item">ABYSS BONDS (10Y) · 3.33% YIELD <span class="down">▼ 0.1%</span></span>
+    <span class="ticker-item">GLOBAL CHAOS ETF · 888.8 <span class="up">▲ 8.8%</span></span>
+    <span class="ticker-item">PANDEMONIUM REIT · 444.4 <span class="up">▲ 2.2%</span></span>
+    <!-- duplicate -->
+    <span class="ticker-item">SOULS · 666.66 <span class="up">▲ 13.3%</span></span>
+    <span class="ticker-item">ELDRITCH BLAST · 42.00 <span class="down">▼ 0.7%</span></span>
+    <span class="ticker-item">HELLFIRE FUTURES · 999.9 <span class="up">▲ 6.6%</span></span>
+    <span class="ticker-item">MORTAL DESPAIR INDEX · 1,313 <span class="up">▲ 4.2%</span></span>
+    <span class="ticker-item">ABYSS BONDS (10Y) · 3.33% YIELD <span class="down">▼ 0.1%</span></span>
+    <span class="ticker-item">GLOBAL CHAOS ETF · 888.8 <span class="up">▲ 8.8%</span></span>
+    <span class="ticker-item">PANDEMONIUM REIT · 444.4 <span class="up">▲ 2.2%</span></span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     STATS ROW
+══════════════════════════════════════════════ -->
+<section class="section section--dark" style="padding: 0;">
+  <div class="stats-row">
+    <div class="stat-box">
+      <span class="stat-number">666+</span>
+      <span class="stat-label">Years of Infernal Experience</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">13,666</span>
+      <span class="stat-label">Souls Under Management</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Contract Duration (Standard)</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">99.9%</span>
+      <span class="stat-label">Client Retention (involuntary)</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     ABOUT / INTRO
+══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="feature-row">
+
+      <div class="feature-text">
+        <span class="section-label">About Mammon LLC</span>
+        <h2>World-Class Malevolence,<br>Delivered With Precision</h2>
+        <div class="gold-rule"></div>
+        <p>
+          Mammon LLC operates at the intersection of the infernal and the financial.
+          Founded under the auspices of our esteemed Patron, we have grown from a
+          modest purveyor of mortal temptation into a diversified holding company
+          with interests spanning market manipulation, elemental catastrophe,
+          and soul acquisition.
+        </p>
+        <p>
+          We are proud to be an <em>equal opportunity employer</em> and encourage
+          applicants from all levels of evil. Our team of dedicated fiends,
+          warlocks, and dark-arts professionals works tirelessly to advance
+          our corporate objectives — and those of the Abyss.
+        </p>
+        <a href="about.html" class="btn btn-outline" style="margin-top:1rem;">Learn More →</a>
+      </div>
+
+      <!-- ══ [IMAGE PLACEHOLDER] ═════════════════
+           TYPE   : Editorial / brand photograph
+           CONTENT: A sleek, oppressively corporate boardroom.
+                    Long obsidian table, leather chairs. Framed
+                    portraits on walls — but with subtle horns on
+                    the subjects, visible only on close inspection.
+                    Floor-to-ceiling windows showing the city.
+                    Empty of people, lit dramatically from above.
+           FILE   : assets/boardroom.jpg
+           DIMENSIONS: 800×600 minimum
+      ═════════════════════════════════════════ -->
+      <div class="feature-img img-placeholder">
+        <span class="ph-icon">🏛️</span>
+        <span class="ph-type">Brand Photograph — Boardroom</span>
+        <p class="ph-desc">Sleek obsidian boardroom, floor-to-ceiling windows, city view. Empty, dramatically lit. Subtle horns on portrait subjects on the walls.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SERVICES OVERVIEW
+══════════════════════════════════════════════ -->
+<section class="section section--darker">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Our Core Offerings</span>
+      <h2>Infernal Services for<br>a Mortal World</h2>
+      <div class="gold-rule center"></div>
+      <p style="max-width:520px; margin:0 auto; color:var(--ash-dim); font-style:italic;">
+        From portfolio-level chaos engineering to bespoke soul acquisition,
+        Mammon LLC provides end-to-end diabolical solutions.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">📉</span>
+        <h3>Market Manipulation</h3>
+        <p>Precision-targeted financial disruption across all major mortal exchanges. We move markets. Frequently in the wrong direction — for your competitors.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⛈️</span>
+        <h3>Natural Event Advisory</h3>
+        <p>Strategic deployment of elemental disruption. Our meteorological and geological portfolios deliver outsized returns for clients willing to think catastrophically.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">👁️</span>
+        <h3>Intelligence &amp; Surveillance</h3>
+        <p>Our network of minions spans the mortal realm. Dream-interception, vision seeding, and telepath-based data collection available on retainer.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <h3>Eldritch Contracts</h3>
+        <p>Bespoke pact drafting for warlocks, ambitious executives, and others seeking power beyond conventional means. Fine print guaranteed impenetrable.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💀</span>
+        <h3>Soul Acquisition</h3>
+        <p>Full-service soul transference solutions, including the SoulVault digital platform. Irrevocable, binding, and extremely cost-effective for the Patron.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🦷</span>
+        <h3>Benefits Administration</h3>
+        <p>Comprehensive employee benefits for all warlocks and associates — including industry-leading dental coverage, arcane knowledge stipends, and soul-renting options.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="pact.html" class="btn btn-primary">View All Services</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FEATURE: SOULVAULT
+══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="feature-row" style="margin-bottom:0;">
+
+      <!-- ══ [IMAGE PLACEHOLDER] ═════════════════
+           TYPE   : App / product screenshot
+           CONTENT: Mockup of the "SoulVault" mobile app.
+                    Dark interface, gold typography, a digital
+                    contract with a glowing signature field.
+                    Could be shown on a phone mockup or as a
+                    flat screen graphic. Corporate, sleek, sinister.
+           FILE   : assets/soulvault-app.png
+           DIMENSIONS: 800×600 minimum, transparent bg ideal
+      ═════════════════════════════════════════ -->
+      <div class="feature-img img-placeholder">
+        <span class="ph-icon">📱</span>
+        <span class="ph-type">Product Screenshot — SoulVault App</span>
+        <p class="ph-desc">Dark-mode mobile app mockup: digital contract, glowing signature field, gold typography on void-black. Clean, corporate, deeply sinister.</p>
+      </div>
+
+      <div class="feature-text" style="border-right:none; border-left: var(--border-gold);">
+        <span class="section-label">Introducing SoulVault™</span>
+        <h2>Blood Pacts,<br>Modernised</h2>
+        <div class="gold-rule"></div>
+        <p>
+          Gone are the days of candles, incantations, and paper burned at midnight.
+          <strong>SoulVault</strong> is Mammon LLC's proprietary digital platform
+          for seamless soul transference and pact execution — available on all
+          mortal devices.
+        </p>
+        <p>
+          Sign your blood pact digitally. Manage your obligations. Check your
+          soul's current valuation. Receive notifications from the Patron
+          via encrypted dream-channel or standard push notification.
+        </p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="pact.html" class="btn btn-primary">Open a Pact</a>
+          <a href="pact.html#soul-transfer" class="btn btn-ghost">Soul Renting Options</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════ -->
+<section class="section section--blood">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-label">Client Testimonials</span>
+      <h2>What Our Associates Say</h2>
+      <div class="gold-rule center"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-item">
+        <blockquote>
+          "I signed the Eldritch Pact expecting bureaucratic delays. Instead I had
+          arcane powers within the fortnight and my rivals' hedge funds had
+          inexplicably collapsed. Five stars — would forfeit soul again."
+        </blockquote>
+        <div class="testimonial-author">R. Blackwood</div>
+        <div class="testimonial-role">Former Investment Banker, Current Warlock</div>
+      </div>
+      <div class="testimonial-item">
+        <blockquote>
+          "The Creature Resources team was surprisingly empathetic during
+          onboarding. John Smith even sent a pigeon to confirm my orientation
+          date. The dental plan alone was worth selling my immortal soul."
+        </blockquote>
+        <div class="testimonial-author">M. Vesper</div>
+        <div class="testimonial-role">Junior Supervisor of Worldly Affairs</div>
+      </div>
+      <div class="testimonial-item">
+        <blockquote>
+          "I've worked with several infernal holding companies. Mammon LLC
+          is unambiguously the most professional. The fine print is
+          impenetrable, yes, but the benefits package is genuinely competitive."
+        </blockquote>
+        <div class="testimonial-author">Lord Ashenmere</div>
+        <div class="testimonial-role">Strategic Partner, Dept. of Dark Arts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CTA BANNER
+══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="cta-banner">
+      <div>
+        <span class="section-label">Begin Your Journey</span>
+        <h2>Ready to Join the<br>Infernal Family?</h2>
+        <p>We are currently accepting applications from fiendishly clever individuals
+           with a passion for success and a willingness to forfeit their soul.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem; align-items:flex-start;">
+        <a href="careers.html" class="btn btn-primary">View Open Positions</a>
+        <a href="contact.html" class="btn btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 42 L4 10 L14 10 L24 28 L34 10 L44 10 L44 42" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 10 C10 6, 6 3, 4 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M38 10 C38 6, 42 3, 44 2" stroke="#9E0000" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="4"  cy="2" r="1.5" fill="#9E0000"/>
+            <circle cx="44" cy="2" r="1.5" fill="#9E0000"/>
+          </svg>
+          Mammon LLC
+        </a>
+        <p><em>"Greed is not merely good — it is divine. And we are its faithful servants."</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#leadership">Leadership</a></li>
+          <li><a href="about.html#departments">Departments</a></li>
+          <li><a href="about.html#pledge">Eldritch Pledge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="pact.html">Eldritch Pacts</a></li>
+          <li><a href="pact.html#soul-transfer">Soul Transference</a></li>
+          <li><a href="pact.html#soulvault">SoulVault™</a></li>
+          <li><a href="pact.html#spells">Spells &amp; Invocations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Opportunities</h5>
+        <ul>
+          <li><a href="careers.html">Open Positions</a></li>
+          <li><a href="careers.html#apply">How to Apply</a></li>
+          <li><a href="contact.html">Contact CR</a></li>
+          <li><a href="pact.html#appendix-b">Dress Code</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pledge-banner">
+      <strong>The Eldritch Company Pledge (Abridged)</strong>
+      "I, [Employee Name], do solemnly swear to serve the Eldritch Company's business with utmost care.
+      I shall harness the power of eldritch blast in pursuit of our goals, with skills unsurpassed.
+      I shall keep our secrets, hidden from the light, guarding the eldritch knowledge, day and night."
+    </div>
+
+    <div class="footer-bottom">
+      <p class="legal">
+        Mammon LLC is governed by the Laws of the Abyss. All pacts are irrevocable and binding. Soul transference is permanent.
+        Mammon LLC makes no representations regarding the reversibility of any contractual obligation.
+        The Patron's true identity remains confidential and is not subject to disclosure under any jurisdiction, mortal or otherwise.
+        Free dental. Equal opportunity employer across all levels of evil. SoulVault™ is a registered trademark of Mammon LLC and its infernal subsidiaries.
+        By visiting this website you acknowledge that you have been observed and catalogued.
+      </p>
+      <div class="copyright">© MAMMON LLC · ALL RIGHTS RESERVED · ALL SOULS RESERVED</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Minimal JS: mobile nav toggle only
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.style.display === 'flex';
+      links.style.display = open ? '' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '72px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(5,0,10,0.97)';
+      links.style.padding = '1.5rem 2.5rem';
+      links.style.borderBottom = '1px solid rgba(201,168,76,0.15)';
+    });
+  }
+</script>
+</body>
+</html>
