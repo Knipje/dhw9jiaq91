@@ -395,7 +395,6 @@ hr {
   text-align: center;
   padding: 2.5rem 1.5rem;
   border: var(--border-gold);
-  border-bottom: 3px solid var(--blood-bright);
   background: var(--void-light);
 }
 .stat-box .stat-number {
