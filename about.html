@@ -154,7 +154,7 @@
     }
     .dept-header-row {
       display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-columns: 1fr 2fr;
       background: var(--void-light);
       border-bottom: 1px solid var(--blood-bright);
       padding: 0.75rem 1.5rem;
@@ -169,11 +169,11 @@
     }
     .dept-row {
       display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-columns: 1fr 2fr;
       border-bottom: 1px solid rgba(201,168,76,0.08);
       padding: 1.25rem 1.5rem;
       gap: 1rem;
-      align-items: center;
+      align-items: flex-start;
       transition: background 0.15s;
     }
     .dept-row:last-child { border-bottom: none; }
@@ -384,10 +384,8 @@
            FILE   : assets/ancient-contract.jpg
            DIMENSIONS: 700×900, portrait orientation preferred
       ═════════════════════════════════════════ -->
-      <div class="img-placeholder" style="min-height:500px;">
-        <span class="ph-icon">📜</span>
-        <span class="ph-type">Archival Photograph — Original Contract</span>
-        <p class="ph-desc">Flat-lay of ancient parchment document with wax seal, ornate calligraphy, on dark stone surface. Some text deliberately illegible. Gold seal prominent.</p>
+      <div class = "free-img" style="min-height:500px;">
+          <img src="assets/parchment.jpg" alt="Oldest recorded article from Mammon LLC" style="width: 100%; height: 100%; object-fit: cover; display: block;">
       </div>
     </div>
   </div>
@@ -571,32 +569,26 @@
       <div class="dept-header-row">
         <span>Department</span>
         <span>Function</span>
-        <span>Pledge Culture</span>
       </div>
       <div class="dept-row">
         <div class="dept-name">Dark Arts</div>
         <div class="dept-desc">Core magical operations, eldritch power research, and ritual execution. The foundational practice of Mammon LLC.</div>
-        <div class="dept-pledge-note">Somber, reverent tone. Candle lighting. Brief meditation may precede recitation.</div>
       </div>
       <div class="dept-row">
         <div class="dept-name">Marketing &amp; Sales</div>
         <div class="dept-desc">Mortal temptation campaigns, soul acquisition outreach, brand management. Responsible for the SoulVault™ growth strategy.</div>
-        <div class="dept-pledge-note">Enthusiastic delivery. Persuasive inflection encouraged. Salesmanship elements permitted.</div>
       </div>
       <div class="dept-row">
         <div class="dept-name">Research &amp; Development</div>
         <div class="dept-desc">Expansion of eldritch knowledge, new power development, interdimensional market research, and chaos engineering.</div>
-        <div class="dept-pledge-note">Innovation-focused. References to scientific principles and cutting-edge technologies permitted.</div>
       </div>
       <div class="dept-row">
         <div class="dept-name">Creature Resources</div>
         <div class="dept-desc">Warlock onboarding, benefits administration, performance management, and employee relations across all species and planes.</div>
-        <div class="dept-pledge-note">Emphasis on fairness, equality, and inclusivity. Warmly delivered. Supportive posture.</div>
       </div>
       <div class="dept-row">
         <div class="dept-name">Compliance &amp; Legal</div>
         <div class="dept-desc">Pact drafting, regulatory adherence (Laws of the Abyss), confidentiality enforcement, and fine print optimisation.</div>
-        <div class="dept-pledge-note">Strict, formal tone. Emphasis on adherence, confidentiality, and legal obligation.</div>
       </div>
     </div>
   </div>

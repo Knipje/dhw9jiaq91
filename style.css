@@ -336,6 +336,12 @@ hr {
   background: linear-gradient(135deg, #0D0014 0%, #1A0005 50%, #0D0014 100%);
 }
 
+.free-img {
+  padding: 1rem;
+  background: var(--void-light);
+  border: 1px solid var(--gold-dim);
+}
+
 /* ── Grid ────────────────────────────────────────────────── */
 .grid-2 {
   display: grid;
